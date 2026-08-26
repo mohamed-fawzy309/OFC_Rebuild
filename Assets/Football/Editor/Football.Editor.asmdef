@@ -1,0 +1,28 @@
+{
+    "name": "Football.Editor",
+    "rootNamespace": "Football.Editor",
+    "references": [
+        "Football.Core",
+        "Football.Input",
+        "Football.Players",
+        "Football.Ball",
+        "Football.Actions",
+        "Football.Match",
+        "Football.Teams",
+        "Football.AI",
+        "Football.Camera",
+        "Football.UI",
+        "Football.World"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

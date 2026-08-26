@@ -1,0 +1,19 @@
+{
+    "name": "Football.Match",
+    "rootNamespace": "Football.Match",
+    "references": [
+        "Football.Core",
+        "Football.Players",
+        "Football.Ball",
+        "Football.Teams"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,16 @@
+{
+    "name": "Football.UI",
+    "rootNamespace": "Football.UI",
+    "references": [
+        "Football.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

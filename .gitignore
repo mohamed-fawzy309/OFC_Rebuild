@@ -1,0 +1,149 @@
+# ============================================================
+# Unity .gitignore — OFC_Rebuild
+# ============================================================
+
+# ----------------------------
+# Unity generated
+# ----------------------------
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]serSettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# ----------------------------
+# Unity crash / diagnostic
+# ----------------------------
+crashlytics-build.properties
+sysinfo.txt
+*.aab
+
+# ----------------------------
+# Asset meta (auto-generated per-folder)
+# Do NOT track *.meta files for deleted assets
+# ----------------------------
+# *.meta  -- NOT ignoring these; Unity needs them tracked
+
+# ----------------------------
+# IDE / Editor
+# ----------------------------
+.vs/
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# ----------------------------
+# Rider
+# ----------------------------
+.idea/
+
+# ----------------------------
+# OS junk
+# ----------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ----------------------------
+# Builds / outputs
+# ----------------------------
+*.apk
+*.aab
+*.unitypackage
+*.app
+build/
+Builds/
+ExportedObj/
+
+# ----------------------------
+# Plastic SCM (Unity VCS)
+# ----------------------------
+ignore.conf
+*.private.0
+*.private
+
+# ----------------------------
+# Gradle (Android)
+# ----------------------------
+*.gradle
+.gradle/
+local.properties
+
+# ----------------------------
+# NuGet
+# ----------------------------
+*.nupkg
+
+# ----------------------------
+# Asset import overrides
+# ----------------------------
+*. FBX → tracked (source art is valuable)
+
+# ============================================================
+# IMPORTANT — PROTECTED SOURCE FOLDERS
+# These are NEVER ignored. Listed here as explicit reminders
+# and enforced by the positive rules below.
+#
+#   Assets/Football/Runtime/
+#   Assets/Football/Editor/
+#   Assets/Football/Data/
+#   Assets/Football/Tests/
+# ============================================================
+
+# ----------------------------
+# Explicitly TRACK these paths
+# (negation of any accidental ignores)
+# ----------------------------
+!Assets/Football/
+!Assets/Football/**/*
+!Assets/Football/Runtime/
+!Assets/Football/Runtime/**/*
+!Assets/Football/Editor/
+!Assets/Football/Editor/**/*
+!Assets/Football/Data/
+!Assets/Football/Data/**/*
+!Assets/Football/Tests/
+!Assets/Football/Tests/**/*
+!Assets/Football/Prefabs/
+!Assets/Football/Prefabs/**/*
+!Assets/Football/Scenes/
+!Assets/Football/Scenes/**/*
+!Assets/Football/Art/
+!Assets/Football/Art/**/*
+!Assets/Football/Animation/
+!Assets/Football/Animation/**/*
+!Assets/Football/Audio/
+!Assets/Football/Audio/**/*
+!Assets/Football/Materials/
+!Assets/Football/Materials/**/*
+!Assets/Football/Settings/
+!Assets/Football/Settings/**/*
+!Assets/Football/README.md
+!Assets/Football/Architecture.md
+
+# ----------------------------
+# Also track root project files
+# ----------------------------
+!ProjectSettings/
+!ProjectSettings/**/*
+!Packages/
+!Packages/manifest.json
+!Packages/packages-lock.json
