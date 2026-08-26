@@ -1,12 +1,19 @@
-using UnityEngine;
-
 namespace Football.Core
 {
-    public struct GoalScoredEvent : IGameEvent
+    /// <summary>
+    /// Raised when a goal is scored. Published by the match/goal system.
+    /// </summary>
+    public readonly struct GoalScoredEvent : IGameEvent
     {
-        public float Timestamp { get; set; }
-        public int ScoringTeamId;
-        public int ScoringPlayerId;
-        public Vector3 BallPosition;
+        public float Timestamp { get; }
+        public int ScoringTeamId { get; }
+        public int ScoringPlayerId { get; }
+
+        public GoalScoredEvent(float timestamp, int scoringTeamId, int scoringPlayerId)
+        {
+            Timestamp = timestamp;
+            ScoringTeamId = scoringTeamId;
+            ScoringPlayerId = scoringPlayerId;
+        }
     }
 }

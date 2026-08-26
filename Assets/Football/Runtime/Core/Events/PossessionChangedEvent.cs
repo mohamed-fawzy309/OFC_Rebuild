@@ -1,10 +1,21 @@
 namespace Football.Core
 {
-    public struct PossessionChangedEvent : IGameEvent
+    /// <summary>
+    /// Raised when ball possession changes between teams. Published by the possession authority.
+    /// </summary>
+    public readonly struct PossessionChangedEvent : IGameEvent
     {
-        public float Timestamp { get; set; }
-        public int PreviousTeamId;
-        public int NewTeamId;
-        public int PlayerId;
+        public float Timestamp { get; }
+        public int PreviousTeamId { get; }
+        public int NewTeamId { get; }
+        public int PlayerId { get; }
+
+        public PossessionChangedEvent(float timestamp, int previousTeamId, int newTeamId, int playerId)
+        {
+            Timestamp = timestamp;
+            PreviousTeamId = previousTeamId;
+            NewTeamId = newTeamId;
+            PlayerId = playerId;
+        }
     }
 }
