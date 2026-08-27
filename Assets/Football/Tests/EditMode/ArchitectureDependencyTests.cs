@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -10,6 +11,15 @@ namespace Football.Tests.EditMode
     {
         private static readonly string RuntimeRoot = "Assets/Football/Runtime";
         private static readonly string ProjectRoot = "Assets/Football";
+
+        private static readonly Regex SingletonInstancePattern = new(
+            @"\bstatic\s+[A-Z]\w*(?:\.\w+)*\s+Instance\b",
+            RegexOptions.Compiled);
+
+        private static readonly HashSet<string> KnownSingletonFiles = new()
+        {
+            Path.Combine("Runtime", "Core", "Debug", "FootballDebugSettings.cs")
+        };
 
         private static readonly Dictionary<string, string[]> ForbiddenDependencies = new()
         {
@@ -150,9 +160,39 @@ namespace Football.Tests.EditMode
             foreach (var file in csFiles)
             {
                 var content = File.ReadAllText(file);
-                Assert.IsFalse(content.Contains("static Instance"),
-                    $"Core file has Singleton pattern: {Path.GetRelativePath(ProjectRoot, file)}");
+                if (!SingletonInstancePattern.IsMatch(content)) continue;
+
+                var relativePath = Path.GetRelativePath(ProjectRoot, file);
+                Assert.IsTrue(KnownSingletonFiles.Contains(relativePath),
+                    $"Core file has unrecognized Singleton pattern: {relativePath}. " +
+                    $"Add to KnownSingletonFiles if this is intentional technical debt.");
             }
+        }
+
+        [Test]
+        public void SingletonDetector_CatchesTypedStaticInstance()
+        {
+            var code = "public static ExampleService Instance { get; private set; }";
+            Assert.IsTrue(SingletonInstancePattern.IsMatch(code),
+                "Detector should catch typed static Instance declarations");
+        }
+
+        [Test]
+        public void SingletonDetector_DetectsFootballDebugSettingsSingleton()
+        {
+            var file = Path.Combine(RuntimeRoot, "Core", "Debug", "FootballDebugSettings.cs");
+            Assert.IsTrue(File.Exists(file), "FootballDebugSettings.cs not found");
+            var content = File.ReadAllText(file);
+            Assert.IsTrue(SingletonInstancePattern.IsMatch(content),
+                "Detector must find FootballDebugSettings Singleton pattern");
+        }
+
+        [Test]
+        public void SingletonDetector_DoesNotFlagUnrelatedStaticProperties()
+        {
+            var code = "public static int Version { get; }";
+            Assert.IsFalse(SingletonInstancePattern.IsMatch(code),
+                "Detector should NOT flag non-Instance static properties");
         }
 
         [Test]
