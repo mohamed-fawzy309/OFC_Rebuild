@@ -22,6 +22,5 @@ namespace Football.Data
         public float KickForce = 20f;
         public float PassForce = 12f;
         public float ChipForce = 15f;
-        public float DribbleStickDistance = 0.5f;
     }
 }

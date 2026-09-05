@@ -12,7 +12,8 @@
         "Football.AI",
         "Football.Camera",
         "Football.UI",
-        "Football.World"
+        "Football.World",
+        "Football.Data"
     ],
     "includePlatforms": [
         "Editor"
