@@ -114,12 +114,16 @@ namespace Football.Tests.EditMode
         }
 
         [Test]
-        public void PlayersDependsOnlyOnCore()
+        public void PlayersDependsOnCoreAndData()
         {
-            var refs = GetAssemblyReferences("Football.Players");
-            Assert.AreEqual(1, refs.Length,
-                $"Football.Players should depend only on Football.Core. Found: {string.Join(", ", refs)}");
-            Assert.AreEqual("Football.Core", refs[0]);
+            // Task 139: Football.Players depends on Football.Core (foundation) and Football.Data
+            // (the authored player data it references via the PlayerEntity identity component).
+            var refs = GetAssemblyReferences("Football.Players")
+                .OrderBy(x => x)
+                .ToArray();
+            CollectionAssert.AreEqual(new[] { "Football.Core", "Football.Data" }, refs,
+                "Football.Players should depend only on Football.Core and Football.Data. " +
+                $"Found: {string.Join(", ", refs)}");
         }
 
         [Test]
@@ -138,7 +142,7 @@ namespace Football.Tests.EditMode
             {
                 "Football.Core", "Football.Input", "Football.Players", "Football.Ball",
                 "Football.Actions", "Football.Match", "Football.Teams", "Football.AI",
-                "Football.Camera", "Football.UI", "Football.World"
+                "Football.Camera", "Football.UI", "Football.World", "Football.Data"
             };
 
             var existing = GetAllAssemblyDefinitions()

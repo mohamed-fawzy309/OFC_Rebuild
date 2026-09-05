@@ -2,7 +2,8 @@
     "name": "Football.Players",
     "rootNamespace": "Football.Players",
     "references": [
-        "Football.Core"
+        "Football.Core",
+        "Football.Data"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
